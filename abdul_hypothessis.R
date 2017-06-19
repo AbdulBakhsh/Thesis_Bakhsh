@@ -31,16 +31,18 @@ library(arm)
 
 hyp1.lm <- lm(edds78 ~ clarity + strategy, data= bed.df)
 display(hyp1.lm) # strategy seems to have an effect
+summary(hyp1.lm) # will provide significance 
 
 hyp1.lm1 <- lm(edds78 ~ clarity*edds56f + strategy*edds56f, data= na.df)
 display(hyp1.lm1)
-
+summary(hyp1.lm1) # will provide significance 
 
 abdulna.df <- na.omit(abdul.df)
 
 graph <- ggplot(data = abdulna.df, aes(y=edds78, x=strategy, colour=edds56f)) +
   geom_point() + geom_smooth(method="lm", se=TRUE)
 graph
+
 ## Question: Since there are missing answers for some measures, what should i do with it?
 ## question: how do i include the EEDS if they only said yes? I want EDDS5 and EDDS6 to be only yes
 
