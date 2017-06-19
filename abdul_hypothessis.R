@@ -35,11 +35,10 @@ display(hyp1.lm) # strategy seems to have an effect
 hyp1.lm1 <- lm(edds78 ~ clarity*edds56f + strategy*edds56f, data= na.df)
 display(hyp1.lm1)
 
-View(na.df)
-na.df <- na.omit(abdul.df)
-names(na.df)
 
-graph <- ggplot(data = na.df, aes(y=edds78, x=strategy, colour=edds56f)) +
+abdulna.df <- na.omit(abdul.df)
+
+graph <- ggplot(data = abdulna.df, aes(y=edds78, x=strategy, colour=edds56f)) +
   geom_point() + geom_smooth(method="lm", se=TRUE)
 graph
 ## Question: Since there are missing answers for some measures, what should i do with it?
