@@ -1,4 +1,12 @@
-
+library(QuantPsyc)
+library(car)
+library(pastecs)
+library(ggplot2)
+library(multcomp)
+library(compute.es)
+library(psych)
+library(Hmisc)
+library(reshape)
 
 # Clean the data -----------------------------------------------------------------------------
 graphics.off() # This closes all of R's graphics windows.
