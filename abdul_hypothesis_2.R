@@ -167,3 +167,5 @@ graph6
 
 ## does this mean that Hypothesis 1 and hypothesis 3 are rejected ?
 ## does this mean that only hypothesis 2 is accepted?
+
+

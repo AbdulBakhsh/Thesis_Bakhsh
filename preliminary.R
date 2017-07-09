@@ -213,3 +213,80 @@ ThesisData$genderfactor <- factor(ThesisData$gender, levels = c(1:2), labels = c
 abdul.df <- ThesisData[, c("age", "gender", "genderfactor", "ethnicity", "education", "marital", "employment", "income", "impulse", "aware", "strategy", "clarity", "nonaccept", "goals", "derstot", "intaffp", "intautp", "intaffw", "intautw", "sostaffp", "sostautp", "sostaffw", "sostautw", "sosiaffp", "sosiautp", "sosiaffw", "sosiautw", "ssotaffp", "ssotautp", "ssotaffw", "ssotautw", "ssoiaffp", "ssoiautp", "ssoiaffw", "ssoiautw", "DSS", "DCS1", "DCS2", "DCS3", "edds1", "edds2", "edds3", "edds4", "edds5", "edds6", "edds7", "edds8","edds9", "edds10" , "edds11" , "edds12" , "edds13" ,  "edds14",  "edds15", "edds16" , "edds17" , "edds18" , "edds19" , "edds20" , "edds21" , "edds22" , "edds23")]
 
 
+######### Demographics
+
+## changing to factors
+# Change 1 and 2 to male and female for the general dataframe
+
+ThesisData.df$genderfactor <- factor(ThesisData.df$gender, levels = c(1:2), labels = c("Male", "Female"))
+
+## changing 1-7 to education factors
+ThesisData.df$educationfactor <- factor(ThesisData.df$education, levels = c(1:7), labels = c("No schooling completed,", "High school graduate or GED", "Associate degree", "Bachelor’s degree", "Master’s degree", "Professional degree", "Doctorate degree"))
+ThesisData.df$educationfactor
+
+## changing 1,2,3, 4 to marital factor
+
+ThesisData.df$maritalfactor <- factor(ThesisData.df$marital, levels = c(1:5), labels = c("Single,", "Married", "Widowed", "Divorced", "Separated"))
+ThesisData.df$maritalfactor
+
+## changing from 1-9 to employment factor
+ThesisData.df$employmentfactor <- factor(ThesisData.df$employment, levels = c(1:9), labels = c("Employed for wages,", "Self- employed", "No work and looking for work", "No work and not looking for work", "homemaker", "student", "Military", "Retired", "Unable to work" ))
+ThesisData.df$employmentfactor
+# check
+
+## chaanging from to income factor
+ThesisData.df$incomefactor <- factor(ThesisData.df$income, levels = c(1:4), labels = c("Less than $24,999", "$25,000 to $49,999", "$50,000 to $99,999", "$100,000 or more"))
+ThesisData.df$incomefactor
+
+###### Demographics
+nrow(ThesisData.df)
+  ## there are 93 participants
+summary(ThesisData.df)
+summary(ThesisData.df$genderfactor) 
+  #Gender:
+    ## 43 male
+    ## 50 female
+summary(ThesisData.df)
+  #Age:
+    ## mean age is 38.01
+    ## Max age is 73.00
+    ## min age is 21
+    ## Ethnicity:
+    ## 25 white
+    ## 25 asian
+    ## Other 40
+summary(ThesisData.df$maritalfactor)
+ThesisData.df$maritalfactor
+  ## Marital status
+    ## 25 single
+    ## 59 married or in a relashionship
+    ## 2 widowed
+    ## 5 divorced
+    ## 1 ceparated
+    ## 2 NA
+summary(ThesisData.df$educationfactor)
+  ## Education
+    ## 0 no schooling
+    ## 17 highschool or GED
+    ## 9 associate degree
+    ## 53 bachelors
+    ## 13 Master's
+    ## 0 Professional degree
+    ## doctorat
+summary(ThesisData.df$employmentfactor)
+  ## Employment
+    ## 69 employed for wages
+    ## 14 self-employed
+    ## 0 not working
+    ## 6 homemaker
+    ## 2 students
+    ## 0 Military 
+    ## 0 Retired
+    ## 1  Unable to work 
+    ## 2 NA
+summary(ThesisData.df$incomefactor)
+  ##Income
+    ## 23 individuals less than Less than $24,999
+    ## 32 individuals $25,000 to $49,999
+    ## 33 individuals $50,000 to $99,999
+    ## 4 individuals $100,000 or more
