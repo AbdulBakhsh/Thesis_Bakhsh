@@ -41,7 +41,6 @@ ThesisData <-read.csv ("ThesisData.csv", header = TRUE)
 
 ## renaming Questions 2.2 - 3.6 to age + demographics
 ThesisData <- rename(ThesisData, c(Q2.2="age", Q3.1="gender", Q3.2="ethnicity", Q3.3="education", Q3.4="marital", Q3.5="employment", Q3.6="income"))
-names(ThesisData)
 
 ## renaming Questions 4.2 – 4.2.36 to dersX
 ThesisData <- rename(ThesisData, c(Q4.2_1="ders1", Q4.2_2="ders2", Q4.2_3="ders3", Q4.2_4="ders4", Q4.2_5="ders5", Q4.2_6="ders6", Q4.2_7="ders7", Q4.2_8="ders8", Q4.2_9="ders9", Q4.2_10="ders10", Q4.2_11="ders11", Q4.2_12="ders12",Q4.2_13="ders13", Q4.2_14="ders14", Q4.2_15="ders15", Q4.2_16="ders16", Q4.2_17="ders17", Q4.2_18="ders18", Q4.2_19="ders19", Q4.2_20="ders20", Q4.2_21="ders21", Q4.2_22="ders22", Q4.2_23="ders23",Q4.2_24="ders24", Q4.2_25="ders25", Q4.2_26="ders26", Q4.2_27="ders27", Q4.2_28="ders28", Q4.2_28="ders28", Q4.2_29="ders29", Q4.2_30="ders30", Q4.2_31="ders31", Q4.2_32="ders32", Q4.2_33="ders33", Q4.2_34="ders34", Q4.2_35="ders35", Q4.2_36="ders36"))
