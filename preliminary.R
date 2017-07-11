@@ -13,7 +13,7 @@ graphics.off() # This closes all of R's graphics windows.
 rm(list=ls()) 
 
 ThesisData <-read.csv ("ThesisData.csv", header = TRUE)
-
+ThesisData
 
 #----------------Renaming----------------------#
 
@@ -242,6 +242,7 @@ ThesisData.df$incomefactor
 nrow(ThesisData.df)
   ## there are 93 participants
 summary(ThesisData.df)
+
 summary(ThesisData.df$genderfactor) 
   #Gender:
     ## 43 male
@@ -251,28 +252,32 @@ summary(ThesisData.df)
     ## mean age is 38.01
     ## Max age is 73.00
     ## min age is 21
-    ## Ethnicity:
-    ## 25 white
-    ## 25 asian
-    ## Other 40
+  ## Ethnicity:
+    ## 42 white
+    ## 38 asian
+    ## 6 African American
+    ## 3 latin
+    ## 4 non-specified /  No answer
+
 summary(ThesisData.df$maritalfactor)
 ThesisData.df$maritalfactor
   ## Marital status
     ## 25 single
-    ## 59 married or in a relashionship
+    ## 59 married or in a relationship
     ## 2 widowed
     ## 5 divorced
-    ## 1 ceparated
+    ## 1 separated
     ## 2 NA
 summary(ThesisData.df$educationfactor)
   ## Education
     ## 0 no schooling
-    ## 17 highschool or GED
+    ## 17 high school or GED
     ## 9 associate degree
     ## 53 bachelors
     ## 13 Master's
     ## 0 Professional degree
-    ## doctorat
+    ## 0 doctorate
+    ## 2 NA
 summary(ThesisData.df$employmentfactor)
   ## Employment
     ## 69 employed for wages
@@ -290,3 +295,39 @@ summary(ThesisData.df$incomefactor)
     ## 32 individuals $25,000 to $49,999
     ## 33 individuals $50,000 to $99,999
     ## 4 individuals $100,000 or more
+    ## 2 NA
+
+
+
+## chaanging from edds7 to number of binge in last 6 months factor
+ThesisData.df$edds7factor <- factor(ThesisData.df$edds7, levels = c(1:8), labels = c("1", "2", "3", "4", "5", "6", "7", "8"))
+summary(ThesisData.df$edds7factor)
+  ## 24 at least 1 in the last 6 months
+  ## 22 at least 2
+  ## 14 at least 3
+  ## 8 at least 4
+  ## 9 at least 5
+  ## 3 at least 6
+  ## 2 at least 7
+  ## 0 at least 8
+  ## 12 NA
+
+## changing from edds8 to number of binge in last 3 months factor
+ThesisData.df$edds8factor <- factor(ThesisData.df$edds8, levels = c(1:14), labels = c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"))
+summary(ThesisData.df$edds8factor)
+  ## 23 at least 1 time in the last 3 months
+  ## 22 at least 2
+  ## 10 at least 3
+  ## 5 at least 4
+  ## 2 at least 5
+  ## 4 at least 6
+  ## 3 at least 7
+  ## 5 at least 8
+  ## 1 at least 9
+  ## 2 at least 10
+  ## 1 at least 11
+  ## 2 at least 12
+  ## 2 at least 13
+  ## 0 at least 14
+  ## 12 NA
+

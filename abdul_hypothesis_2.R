@@ -37,7 +37,7 @@ summary(hyp1.lm) # not significant
 
 # Multiple R-squared:  0.1178,	Adjusted R-squared:  0.03765
     ## Multiple R-squared has a valuse of 0.1178
-    ##Interpretation: Model accounts for 0.1178 of the model. 
+    ## Interpretation: Model accounts for 0.1178 of the model. 
 
 ##sqrt(0.1178)
     ## the pearson correlation coedicient is 0.34
@@ -80,7 +80,7 @@ graph1 <- ggplot(data = abdulna.df, aes(y=edds78, x=clarity, colour=edds56f)) + 
 graph1 # no association between edds78 for strategy
 
 #total ders 
-graph3 <- ggplot(data = abdulna.df, aes(y=edds78, x=derstot)) + geom_point() + geom_smooth(method="lm", se=TRUE)
+graph3 <- ggplot(data = abdulna.df, aes(y=edds78, x=derstot, colour=edds56f)) + geom_point() + geom_smooth(method="lm", se=TRUE)
 graph3 # an association in right direction but edds56 is not inlcuded
 
 
@@ -93,7 +93,7 @@ graph3 # an association in right direction but edds56 is not inlcuded
 #hypothesis 2: Gender, food restriction, weight-shape over-evaluation, and overall difficulties with emotion regulation are expected to be significant predictors of binge-eating behavior.
 
 ## edds17 is food restriction
-## edds2, edds3, edds4 is weight and shape
+## (edds234)= edds2, edds3, edds4 is weight and shape
 
 ## 1. Make Fear varaiable - 2,3,4 (sum up) (wieght-shape)
 abdulna.df$edds234 <- abdulna.df$edds2 + abdulna.df$edds3 + abdulna.df$edds4
@@ -111,10 +111,43 @@ summary(hyp2.lm) #edds17 (restricting) and edds234 (fear) significant
     ## for edds17 (food restriction) Pr(>|t|) =  0.0400 which is less than P=0.05, thus it is significant
     ## for edds234 (fear) Pr(>|t|) =  0.0941 which is greater than P=0.05, thus it is NOT significant
     ## for derstot (overall difficulties with emotion regulation), Pr(>|t|) =  0.4863 which is greater than P=0.05, thus it is NOT significant
+    ## I dont understand how edds17 (restricting) and edds234 (fear) are significant??
+
+## Below i did how regressions in 4 level as Whiteside did, is this correct??
+
+## A. testing edds78 with gender 
+hyp2a.lm <- lm(edds78 ~ genderfactor, data= bed.df)
+summary(hyp2a.lm) 
+  ## Multiple R-squared:  0.01795,  p-value: 0.3295
+  ## gender at step 1 explained 1.79% of binge eating variance
+  ## NOT significant p= 0.3295 is bigger than 0.05
+
+
+## B. testing eeds78 with gender + food restriction 
+hyp2b.lm <- lm(edds78 ~ genderfactor + edds17, data= bed.df)
+summary(hyp2b.lm)
+  ## Multiple R-squared:  0.1238,  p-value: 0.03216
+  ## For level 2, the avarage times the participants skipped meals in order to change his or her weight (food restriction) accounted for 12.38% of binge eating   variance
+  #Gender and food restriction at step 2 explained 12.38% of binge eating varaince. 
+  ## Significant p= 0.03216 is lower than 0.05
+
+## C. testing edds78 with gender + food restriction + weight-shape over-evaluation
+hyp2c.lm <- lm(edds78 ~ genderfactor + edds17 + edds234, data= bed.df)
+summary(hyp2c.lm)
+  ## Multiple R-squared:  0.1796, p-value: 0.01699
+  ## for level 3 of the hierarchical linear regression, the degree to which the participants evaluated themselve based on weight-shape over-evaluation explained 17.96% of variance over the gender variance 
+  ## significant because p= 0.01699 which is less than 0.05
+
+
+## D. tetsing gender + food restriction + weight-shape over-evaluation + DERS total.
+hyp2d.lm <- lm(edds78 ~ genderfactor + edds17 + edds234 + derstot, data= bed.df)
+summary(hyp2d.lm) 
+  ##Multiple R-squared: 0.1876, p-value: 0.03158
+  #consitant with our expectation, level 4 DERS accounted for 18.76% of variance in binge eating. 
 
 ## testing edds234
-hyp2a.lm <- lm(edds78 ~ edds234, data= bed.df)
-summary(hyp2a.lm) ## here it is significant, but not in the previous one, WHY??????
+hyp2e.lm <- lm(edds78 ~ edds234, data= bed.df)
+summary(hyp2e.lm) ## here it is significant, but not in the previous one, WHY??????
   ## F-statistic: 4.054 on 1 and 53 DF,  p-value: 0.04916
 
 lm.beta(hyp2.lm)
@@ -147,6 +180,7 @@ bed.df$afftotal <- bed.df$sostaffp + bed.df$sostaffw + bed.df$sosiaffp + bed.df$
 
 hyp3.lm <- lm(edds78 ~  afftotal + intaffw + DCS1 + DCS2 + derstot, data=bed.df)
 summary(hyp3.lm) #
+    ## Multiple R-squared:  0.2111, p-value: 0.03528
     ## the p-value is 0.1306, which is greater than 0.05, thus, NOT significant
     ## for afftotal (Affiliation) Pr(>|t|) = 0.99404, which is greater than 0.05, NOT significant 
     ## for intaffw (autonomy) Pr(>|t|) = 0.92971, which is greater than 0.05, NOT significant 
@@ -158,6 +192,10 @@ summary(hyp3.lm) #
 lm.beta(hyp3.lm)
     ##  dont know what this means?
  
+hyp3a.lm <- lm(edds78 ~  afftotal + intaffw + DCS1 + DCS2 , data=bed.df)
+summary(hyp3a.lm) #
+    ## Multiple R-squared:  0.2096, p-value: 0.01744
+
 
 # 1. DCS2
 graph6 <- ggplot(data = bed.df, aes(y=edds78, x=DCS2)) + geom_point() + geom_smooth(method="lm", se=TRUE)
