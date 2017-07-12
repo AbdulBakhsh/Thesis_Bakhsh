@@ -207,3 +207,120 @@ graph6
 ## does this mean that only hypothesis 2 is accepted?
 
 
+######### Demographics
+
+## changing to factors
+# Change 1 and 2 to male and female for the general dataframe
+
+ThesisData.df$genderfactor <- factor(ThesisData.df$gender, levels = c(1:2), labels = c("Male", "Female"))
+
+## changing 1-7 to education factors
+ThesisData.df$educationfactor <- factor(ThesisData.df$education, levels = c(1:7), labels = c("No schooling completed,", "High school graduate or GED", "Associate degree", "Bachelor’s degree", "Master’s degree", "Professional degree", "Doctorate degree"))
+ThesisData.df$educationfactor
+
+## changing 1,2,3, 4 to marital factor
+
+ThesisData.df$maritalfactor <- factor(ThesisData.df$marital, levels = c(1:5), labels = c("Single,", "Married", "Widowed", "Divorced", "Separated"))
+ThesisData.df$maritalfactor
+
+## changing from 1-9 to employment factor
+ThesisData.df$employmentfactor <- factor(ThesisData.df$employment, levels = c(1:9), labels = c("Employed for wages,", "Self- employed", "No work and looking for work", "No work and not looking for work", "homemaker", "student", "Military", "Retired", "Unable to work" ))
+ThesisData.df$employmentfactor
+# check
+
+## chaanging from to income factor
+ThesisData.df$incomefactor <- factor(ThesisData.df$income, levels = c(1:4), labels = c("Less than $24,999", "$25,000 to $49,999", "$50,000 to $99,999", "$100,000 or more"))
+ThesisData.df$incomefactor
+
+###### Demographics
+nrow(ThesisData.df)
+## there are 93 participants
+summary(ThesisData.df)
+sd(ThesisData.df$age)
+summary(ThesisData.df$genderfactor) 
+#Gender:
+## 43 male
+## 50 female
+summary(ThesisData.df)
+#Age:
+## mean age is 38.01
+## Max age is 73.00
+## min age is 21
+## Ethnicity:
+## 42 white
+## 38 asian
+## 6 African American
+## 3 latin
+## 4 non-specified /  No answer
+
+summary(ThesisData.df$maritalfactor)
+ThesisData.df$maritalfactor
+## Marital status
+## 25 single
+## 59 married or in a relationship
+## 2 widowed
+## 5 divorced
+## 1 separated
+## 2 NA
+summary(ThesisData.df$educationfactor)
+## Education
+## 0 no schooling
+## 17 high school or GED
+## 9 associate degree
+## 53 bachelors
+## 13 Master's
+## 0 Professional degree
+## 0 doctorate
+## 2 NA
+summary(ThesisData.df$employmentfactor)
+## Employment
+## 69 employed for wages
+## 14 self-employed
+## 0 not working
+## 6 homemaker
+## 2 students
+## 0 Military 
+## 0 Retired
+## 1  Unable to work 
+## 2 NA
+summary(ThesisData.df$incomefactor)
+##Income
+## 23 individuals less than Less than $24,999
+## 32 individuals $25,000 to $49,999
+## 33 individuals $50,000 to $99,999
+## 4 individuals $100,000 or more
+## 2 NA
+
+
+
+## chaanging from edds7 to number of binge in last 6 months factor
+ThesisData.df$edds7factor <- factor(ThesisData.df$edds7, levels = c(1:8), labels = c("1", "2", "3", "4", "5", "6", "7", "8"))
+summary(ThesisData.df$edds7factor)
+## 24 at least 1 in the last 6 months
+## 22 at least 2
+## 14 at least 3
+## 8 at least 4
+## 9 at least 5
+## 3 at least 6
+## 2 at least 7
+## 0 at least 8
+## 12 NA
+
+## changing from edds8 to number of binge in last 3 months factor
+ThesisData.df$edds8factor <- factor(ThesisData.df$edds8, levels = c(1:14), labels = c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"))
+summary(ThesisData.df$edds8factor)
+## 23 at least 1 time in the last 3 months
+## 22 at least 2
+## 10 at least 3
+## 5 at least 4
+## 2 at least 5
+## 4 at least 6
+## 3 at least 7
+## 5 at least 8
+## 1 at least 9
+## 2 at least 10
+## 1 at least 11
+## 2 at least 12
+## 2 at least 13
+## 0 at least 14
+## 12 NA
