@@ -41,7 +41,6 @@ ThesisData <-read.csv ("ThesisData.csv", header = TRUE)
 
 ## renaming Questions 2.2 - 3.6 to age + demographics
 ThesisData <- rename(ThesisData, c(Q2.2="age", Q3.1="gender", Q3.2="ethnicity", Q3.3="education", Q3.4="marital", Q3.5="employment", Q3.6="income"))
-names(ThesisData)
 
 ## renaming Questions 4.2 – 4.2.36 to dersX
 ThesisData <- rename(ThesisData, c(Q4.2_1="ders1", Q4.2_2="ders2", Q4.2_3="ders3", Q4.2_4="ders4", Q4.2_5="ders5", Q4.2_6="ders6", Q4.2_7="ders7", Q4.2_8="ders8", Q4.2_9="ders9", Q4.2_10="ders10", Q4.2_11="ders11", Q4.2_12="ders12",Q4.2_13="ders13", Q4.2_14="ders14", Q4.2_15="ders15", Q4.2_16="ders16", Q4.2_17="ders17", Q4.2_18="ders18", Q4.2_19="ders19", Q4.2_20="ders20", Q4.2_21="ders21", Q4.2_22="ders22", Q4.2_23="ders23",Q4.2_24="ders24", Q4.2_25="ders25", Q4.2_26="ders26", Q4.2_27="ders27", Q4.2_28="ders28", Q4.2_28="ders28", Q4.2_29="ders29", Q4.2_30="ders30", Q4.2_31="ders31", Q4.2_32="ders32", Q4.2_33="ders33", Q4.2_34="ders34", Q4.2_35="ders35", Q4.2_36="ders36"))
@@ -62,7 +61,7 @@ ThesisData$genderfactor <- factor(ThesisData$gender, levels = c(1:2), labels = c
 names(ThesisData)
 
 
-
+  ## there are 94
 #################### Recoding DERS ####################:
 #making the DERS scales and recoding
 ## Ders
@@ -245,7 +244,7 @@ ThesisData.df <- ThesisData[, c("age", "gender", "ethnicity", "education", "mari
 
 ##  EDDS 1-4 and 9-23 are not included in ThesisData.df ("edds1", "edds2", "edds3", "edds4", "edds9", "edds10" , "edds11" , "edds12" , "edds13" ,  "edds14",  "edds15", "edds16" , "edds17" , "edds18" , "edds19" , "edds20" , "edds21" , "edds22" , "edds23")
 
-
+nrow(ThesisData.df)
 ########  Get a sense of the data
 #ThesisData.df
 #names(ThesisData.df)
@@ -259,8 +258,92 @@ ThesisData.df <- ThesisData[, c("age", "gender", "ethnicity", "education", "mari
 # Change 1 and 2 to male and female for the general dataframe
 
 ThesisData.df$genderfactor <- factor(ThesisData.df$gender, levels = c(1:2), labels = c("Male", "Female"))
+
+## changing 1-7 to education factors
+ThesisData.df$educationfactor <- factor(ThesisData.df$education, levels = c(1:7), labels = c("No schooling completed,", "High school graduate or GED", "Associate degree", "Bachelor’s degree", "Master’s degree", "Professional degree", "Doctorate degree"))
+ThesisData.df$educationfactor
+
+## changing 1,2,3, 4 to marital factor
+
+ThesisData.df$maritalfactor <- factor(ThesisData.df$marital, levels = c(1:5), labels = c("Single,", "Married", "Widowed", "Divorced", "Separated"))
+ThesisData.df$maritalfactor
+
+## changing from 1-9 to employment factor
+ThesisData.df$employmentfactor <- factor(ThesisData.df$employment, levels = c(1:9), labels = c("Employed for wages,", "Self- employed", "No work and looking for work", "No work and not looking for work", "homemaker", "student", "Military", "Retired", "Unable to work" ))
+ThesisData.df$employmentfactor
 # check
 
+## chaanging from to income factor
+ThesisData.df$incomefactor <- factor(ThesisData.df$income, levels = c(1:4), labels = c("Less than $24,999", "$25,000 to $49,999", "$50,000 to $99,999", "$100,000 or more"))
+ThesisData.df$incomefactor
+
+
+## Demographics
+nrow(ThesisData.df)
+    ## there are 93 participants
+summary(ThesisData.df)
+summary(ThesisData.df$genderfactor) 
+  #Gender:
+    ## 43 male
+    ## 50 female
+summary(ThesisData.df)
+  #Age:
+    ## mean age is 38.01
+    ## Max age is 73.00
+    ## min age is 21
+  ## Ethnicity:
+    ## 25 white
+    ## 25 asian
+    ## Other 40
+summary(ThesisData.df$maritalfactor)
+ThesisData.df$maritalfactor
+ ## Marital status
+    ## 25 single
+    ## 59 married or in a relashionship
+    ## 2 widowed
+    ## 5 divorced
+    ## 1 ceparated
+    ## 2 NA
+summary(ThesisData.df$educationfactor)
+  ## Education
+    ## 0 no schooling
+    ## 17 highschool or GED
+    ## 9 associate degree
+    ## 53 bachelors
+    ## 13 Master's
+    ## 0 Professional degree
+    ## doctorat
+summary(ThesisData.df$employmentfactor)
+  ## education
+    ## 69 employed for wages
+    ## 14 self-employed
+    ## 0 not working
+    ## 6 homemaker
+    ## 2 students
+    ## 0 Military 
+    ## 0 Retired
+    ## 1  Unable to work 
+    ## 2 NA
+summary(ThesisData.df$incomefactor)
+  ##Income
+    ## 23 individuals less than Less than $24,999
+    ## 32 individuals $25,000 to $49,999
+    ## 33 individuals $50,000 to $99,999
+    ## 4 individuals $100,000 or more
+
+
+str(ThesisData.df$educationfactor)  
+levels(ThesisData.df$educationfactor)
+  
+
+str(ThesisData.df$age)
+  ##
+length(ThesisData.df$gender)
+dim(ThesisData.df$gender)
+class(ThesisData.df$gender)
+
+levels(ThesisData.df$genderfactor)
+summary(ThesisData.df)
 
 ######################################## Hypothesis 1 ######################################## 
 

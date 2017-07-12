@@ -13,7 +13,7 @@ graphics.off() # This closes all of R's graphics windows.
 rm(list=ls()) 
 
 ThesisData <-read.csv ("ThesisData.csv", header = TRUE)
-
+ThesisData
 
 #----------------Renaming----------------------#
 
@@ -211,5 +211,6 @@ ThesisData$genderfactor <- factor(ThesisData$gender, levels = c(1:2), labels = c
 #str(ThesisData$age)
 
 abdul.df <- ThesisData[, c("age", "gender", "genderfactor", "ethnicity", "education", "marital", "employment", "income", "impulse", "aware", "strategy", "clarity", "nonaccept", "goals", "derstot", "intaffp", "intautp", "intaffw", "intautw", "sostaffp", "sostautp", "sostaffw", "sostautw", "sosiaffp", "sosiautp", "sosiaffw", "sosiautw", "ssotaffp", "ssotautp", "ssotaffw", "ssotautw", "ssoiaffp", "ssoiautp", "ssoiaffw", "ssoiautw", "DSS", "DCS1", "DCS2", "DCS3", "edds1", "edds2", "edds3", "edds4", "edds5", "edds6", "edds7", "edds8","edds9", "edds10" , "edds11" , "edds12" , "edds13" ,  "edds14",  "edds15", "edds16" , "edds17" , "edds18" , "edds19" , "edds20" , "edds21" , "edds22" , "edds23")]
+
 
 
