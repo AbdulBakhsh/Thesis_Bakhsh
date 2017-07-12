@@ -247,13 +247,13 @@ ThesisData.df <- ThesisData[, c("age", "gender", "ethnicity", "education", "mari
 
 
 ########  Get a sense of the data
-ThesisData.df
-names(ThesisData.df)
-head(ThesisData.df) #look at first 6 cases of data
-describe(ThesisData.df)
-str(ThesisData.df) #type of data; two factors and one integer
+#ThesisData.df
+#names(ThesisData.df)
+#head(ThesisData.df) #look at first 6 cases of data
+#describe(ThesisData.df)
+#str(ThesisData.df) #type of data; two factors and one integer
 ## summary gives you Min, 1Q, Median, 3Q, and Max
-summary(ThesisData.df) # check out numbers; pretty balanced
+#summary(ThesisData.df) # check out numbers; pretty balanced
 
 
 # Change 1 and 2 to male and female for the general dataframe
@@ -282,9 +282,6 @@ ThesisData.df$genderfactor <- factor(ThesisData.df$gender, levels = c(1:2), labe
 newModel<-lm(outcome ~ predictor(s), data= dataframe, na.function= anaction)
 ##shows us multiple R-Sqiared , and Adjsted R-squared
 ##sqrt(the number that multiple R-Sqiared gives us)
-
-
-
 Hypo1.df<- lm(edds5~ ThesisData$clarity, ThesisData$strategy, data= ThesisData.df, na.function= na.fail)
 
 ## Question: Since there are missing answers for some measures, what should i do with it?
@@ -299,8 +296,6 @@ Hypo1.df<- lm(edds5~ ThesisData$clarity, ThesisData$strategy, data= ThesisData.d
 ## To test for hypothesis 2, a hierarchical linear regression will be used with variables entered consistent with Whiteside’s model including: 1) gender 2) gender + food restriction 3) gender + food restriction + weight-shape over-evaluation 4) gender + food restriction + weight-shape over-evaluation + DERS total. Consistent with (Whiteside et al., 2007), no interaction terms will be included, no variables centered, and gender coded 0 for female. Also, as an extension of (Whiteside et al., 2007), analyses will be re-run with all variables centered to improve interpretability of the coefficients.
 
 ## Questions: I dont know which item from the EEDS is food restriction, weight-shape
-
-
 
 ## General regression analysis using the lm() function, Linear model
 newModel<-lm(outcome ~ predictor(s), data= dataframe, na.function= anaction)
