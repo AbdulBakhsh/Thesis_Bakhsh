@@ -7,6 +7,8 @@
 # Load the relevant model into R's working memory:
 source("preliminary.R")
 
+
+sd(abdul.df$age)
 #----------------- Hypothesis 1 ---------------------------------------
 # it is expected that a lack of emotional clarity and absence of strategies for managing emotions will be significant predictor of binge eating behavior.
 ## A linear regression will be conducted with DERS subscales as predictors of binge-eating behavior. 
@@ -31,10 +33,13 @@ nobed.df <- subset(abdul.df, edds56f == "No-BED")
 ############### test the hypotheses (check chapter 7, p. 258 and chapter 10, p. 424)
 
 # regression for everyone regardless of with both 5 and 6 only
-hyp1.lm <- lm(edds78 ~ clarity*edds56f + strategy*edds56f, data= abdul.df)
+hyp1.lm <- lm(edds78 ~ clarity + strategy, data= bed.df)
 summary(hyp1.lm) # not significant
+lm.beta(hyp1.lm)
+confint(hyp1.lm)
 
-
+test.lm <- glm(edds78 ~ clarity + strategy, data = bed.df, family = poisson(link = "log"))
+summary(test.lm)
 # Multiple R-squared:  0.1178,	Adjusted R-squared:  0.03765
     ## Multiple R-squared has a valuse of 0.1178
     ## Interpretation: Model accounts for 0.1178 of the model. 
@@ -100,8 +105,10 @@ abdulna.df$edds234 <- abdulna.df$edds2 + abdulna.df$edds3 + abdulna.df$edds4
 bed.df$edds234 <- bed.df$edds2 + bed.df$edds3 + bed.df$edds4
 
 hyp2.lm <- lm(edds78 ~ genderfactor + edds17 + edds234 + derstot, data= bed.df)
-summary(hyp2.lm) #edds17 (restricting) and edds234 (fear) significant
+summary(hyp2.lm) #edds17 (restricting) significant
 
+#hyp2.lma <- lm(edds78 ~ genderfactor*edds17, data= bed.df)
+#summary(hyp2.lma)
 ## F-statistic: 2.887 on 4 and 50 DF,  p-value: 0.03158
     ##Multiple R-squared has a valuse of 0.03158, Interpretation: Model accounts for 0.03158 of the model.
     ## P value is is less than 0.05, thus it is significant, hypothesis 2 not rejected ???
@@ -236,16 +243,17 @@ ThesisData.df$incomefactor
 nrow(ThesisData.df)
 ## there are 93 participants
 summary(ThesisData.df)
-sd(ThesisData.df$age)
 summary(ThesisData.df$genderfactor) 
 #Gender:
 ## 43 male
 ## 50 female
 summary(ThesisData.df)
+sd(abdul.df$age)
 #Age:
 ## mean age is 38.01
 ## Max age is 73.00
 ## min age is 21
+## sb= 11.59
 ## Ethnicity:
 ## 42 white
 ## 38 asian
