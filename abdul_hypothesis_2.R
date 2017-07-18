@@ -35,30 +35,30 @@ nobed.df <- subset(abdul.df, edds56f == "No-BED")
 # regression for everyone regardless of with both 5 and 6 only
 hyp1.lm <- lm(edds78 ~ clarity + strategy, data= bed.df)
 summary(hyp1.lm) # not significant
-lm.beta(hyp1.lm)
 confint(hyp1.lm)
+lm.beta(hyp1.lm)
 
-test.lm <- glm(edds78 ~ clarity + strategy, data = bed.df, family = poisson(link = "log"))
-summary(test.lm)
-# Multiple R-squared:  0.1178,	Adjusted R-squared:  0.03765
-    ## Multiple R-squared has a valuse of 0.1178
-    ## Interpretation: Model accounts for 0.1178 of the model. 
-
-##sqrt(0.1178)
-    ## the pearson correlation coedicient is 0.34
-
-## F-statistic:  1.47 on 5 and 55 DF,  p-value: 0.2147
-    ## not significant because F is 1.45, which is not significant at p < 0.2147.
+## Multiple R-squared:  0.05501,	Adjusted R-squared:  0.01866 
+## F-statistic: 1.513 on 2 and 52 DF,  p-value: 0.2297
+    ## Interpretation: Model accounts for 0.1178 of the model.   
+    ## not significant because F is 0.2297, which is not significant at p < 0.2147.
     ## for it to be significant F has to be less than p 0.05 and our P is p < 0.2147, thus not significant
-    ## if this observed significance is less than 0.05, then it would have an effect. 
 
-## The results tells us that there is less than 21.47%  chance that an F-ratio this large would happen if the null hupothesis were true. Therefore, we CANNOT conclude that our regression model results in significiantly better prediction of binge eating than if we used the mean valuse of binge eating. In short, the regression model (emotional clarity and absence of strategies) overal does NOT predicts binge eating and is not significant. 
+## confint(hyp1.lm), 
+    ## Emotional clarity (B = .09, CI = -.14, .33) and strategy (B = 0.5, CI = -.05, .15)
 
-    ## reject hypotheis 1, emotional clarity and absence of strategies for managing emotions are NOT significant predictor of binge eating behavior??
+## Emotional clarity and absence of strategies did not significantly predict binge-eating, R2 = 0.06, F = (2, 52) = 1.51, p = 0.23.  Emotional clarity (B = .09, CI = -.14, .33) and strategy (B = 0.5, CI = -.05, .15) were both positively, but not significantly, associated with binge-eating.
+  
+  ## R2 is "Multiple R-squared", F is "F-statistic: 1.513 on 2 and 52 DF", P is "p-value: 0.2297", B is "estimate", CI is "confint"
 
+
+## The results tells us that there is less than 11.78%  chance that an F-ratio this large would happen if the null hupothesis were true. Therefore, we CANNOT conclude that our regression model results in significiantly better prediction of binge eating than if we used the mean valuse of binge eating. In short, the regression model (emotional clarity and absence of strategies) overal does NOT predicts binge eating and is not significant. 
+
+
+#test.lm <- glm(edds78 ~ clarity + strategy, data = bed.df, family = poisson(link = "log"))
+# summary(test.lm)
 
 # here, use all data and include whether or not meeting criteria interacts with predicted DERS Scales  
-    ##(WHAT is the diffrence between hyp1.lm and hyp1.lm1 ) ??
 hyp1.lm1 <- lm(edds78 ~ clarity*edds56f + strategy*edds56f, data= abdul.df)
 summary(hyp1.lm1) # not significant
 
@@ -89,7 +89,6 @@ graph3 <- ggplot(data = abdulna.df, aes(y=edds78, x=derstot, colour=edds56f)) + 
 graph3 # an association in right direction but edds56 is not inlcuded
 
 
-## why dont we remove all non-BED participants?? 
 
 
 
@@ -106,64 +105,26 @@ bed.df$edds234 <- bed.df$edds2 + bed.df$edds3 + bed.df$edds4
 
 hyp2.lm <- lm(edds78 ~ genderfactor + edds17 + edds234 + derstot, data= bed.df)
 summary(hyp2.lm) #edds17 (restricting) significant
+confint(hyp2.lm)
+lm.beta(hyp2.lm)
 
-#hyp2.lma <- lm(edds78 ~ genderfactor*edds17, data= bed.df)
-#summary(hyp2.lma)
+
+## Multiple R-squared:  0.1876,	Adjusted R-squared:  0.1226 
 ## F-statistic: 2.887 on 4 and 50 DF,  p-value: 0.03158
     ##Multiple R-squared has a valuse of 0.03158, Interpretation: Model accounts for 0.03158 of the model.
-    ## P value is is less than 0.05, thus it is significant, hypothesis 2 not rejected ???
+    ## P value is is less than 0.05, thus it is significant, hypothesis 2 not rejected ?
     ## for Gender, food ristriction, weight-shape over-evaluation, and overall difficulties with emotion regulation are significant predictors of bed-behaviors
     
+## Results show that gender, food restriction, weight-shape over-evaluation, and overall difficulties with emotion regulation significantly predicted binge-eating, R2= 0.19, F (4, 50) = 2.89, p = 0.03. 
+# With gender (B= -0.25, CI= -1.49,0.99), food restriction "edds17" (B= 0.9, CI=0.004, 0.19), weight-shape over-evaluation "edds234" (B= 0.11, CI=-0.02, 0.22), overall difficulties with emotion regulation "derstot" (B= 0.010, CI= -0.02, 0.04)
+
     ## for gender, Pr(>|t|) = 0.6927 which is greater than P=0.05, thus NOT significant
     ## for edds17 (food restriction) Pr(>|t|) =  0.0400 which is less than P=0.05, thus it is significant
     ## for edds234 (fear) Pr(>|t|) =  0.0941 which is greater than P=0.05, thus it is NOT significant
     ## for derstot (overall difficulties with emotion regulation), Pr(>|t|) =  0.4863 which is greater than P=0.05, thus it is NOT significant
-    ## I dont understand how edds17 (restricting) and edds234 (fear) are significant??
-
-## Below i did how regressions in 4 level as Whiteside did, is this correct??
-
-## A. testing edds78 with gender 
-hyp2a.lm <- lm(edds78 ~ genderfactor, data= bed.df)
-summary(hyp2a.lm) 
-  ## Multiple R-squared:  0.01795,  p-value: 0.3295
-  ## gender at step 1 explained 1.79% of binge eating variance
-  ## NOT significant p= 0.3295 is bigger than 0.05
-
-
-## B. testing eeds78 with gender + food restriction 
-hyp2b.lm <- lm(edds78 ~ genderfactor + edds17, data= bed.df)
-summary(hyp2b.lm)
-  ## Multiple R-squared:  0.1238,  p-value: 0.03216
-  ## For level 2, the avarage times the participants skipped meals in order to change his or her weight (food restriction) accounted for 12.38% of binge eating   variance
-  #Gender and food restriction at step 2 explained 12.38% of binge eating varaince. 
-  ## Significant p= 0.03216 is lower than 0.05
-
-## C. testing edds78 with gender + food restriction + weight-shape over-evaluation
-hyp2c.lm <- lm(edds78 ~ genderfactor + edds17 + edds234, data= bed.df)
-summary(hyp2c.lm)
-  ## Multiple R-squared:  0.1796, p-value: 0.01699
-  ## for level 3 of the hierarchical linear regression, the degree to which the participants evaluated themselve based on weight-shape over-evaluation explained 17.96% of variance over the gender variance 
-  ## significant because p= 0.01699 which is less than 0.05
-
-
-## D. tetsing gender + food restriction + weight-shape over-evaluation + DERS total.
-hyp2d.lm <- lm(edds78 ~ genderfactor + edds17 + edds234 + derstot, data= bed.df)
-summary(hyp2d.lm) 
-  ##Multiple R-squared: 0.1876, p-value: 0.03158
-  #consitant with our expectation, level 4 DERS accounted for 18.76% of variance in binge eating. 
-
-## testing edds234
-hyp2e.lm <- lm(edds78 ~ edds234, data= bed.df)
-summary(hyp2e.lm) ## here it is significant, but not in the previous one, WHY??????
-  ## F-statistic: 4.054 on 1 and 53 DF,  p-value: 0.04916
-
-lm.beta(hyp2.lm)
-    ## these estimates tell us the number of standard devenation by which the outcome will change as a result of one standard deviation change in the predictor
-    ## the standarized beta values for edds17 and edds234 are almost identical and close to each other (0.2855 and 0.2234), indicating that both variables have comparable degree of importance in the model. 
-
 
 # graphs for hypothesis 2
-# 1. fear
+# 1. fear (edds234)
 graph4 <- ggplot(data = bed.df, aes(y=edds78, x=edds234)) + geom_point() + geom_smooth(method="lm", se=TRUE)
 graph4 
 
@@ -171,7 +132,7 @@ graph4
 graph5 <- ggplot(data = bed.df, aes(y=edds78, x=edds17)) + geom_point() + geom_smooth(method="lm", se=TRUE)
 graph5 
 
-## are we just making graphs only for edds234 and edds17 because there were significant??
+## are we just making graphs only for edds234 and edds17 because there were significant?
 
 
 
@@ -185,29 +146,48 @@ abdul.df$afftotal <- abdul.df$sostaffp + abdul.df$sostaffw + abdul.df$sosiaffp +
 bed.df$afftotal <- bed.df$sostaffp + bed.df$sostaffw + bed.df$sosiaffp + bed.df$sosiaffw + bed.df$ssotaffp + bed.df$ssotaffw + bed.df$ssoiaffp + bed.df$ssoiaffw
 
 
-hyp3.lm <- lm(edds78 ~  afftotal + intaffw + DCS1 + DCS2 + derstot, data=bed.df)
-summary(hyp3.lm) #
-    ## Multiple R-squared:  0.2111, p-value: 0.03528
-    ## the p-value is 0.1306, which is greater than 0.05, thus, NOT significant
+hyp3.lm <- lm(edds78 ~  afftotal + intaffw + DCS1 + DCS2 + derstot, data=bed.df) ## why didnt we do DCS3 Instead ?
+summary(hyp3.lm) # only DCS2 is significant
+confint(hyp3.lm)
+lm.beta(hyp3.lm)
+    ## Multiple R-squared:  0.2111,	Adjusted R-squared:  0.1306 
+    ## F-statistic: 2.623 on 5 and 49 DF,  p-value: 0.03528
+    ## the p-value is 0.03528, which is lower than 0.05, thus, significant
+
+  ## Results show that affiliation, autonomy, and DERS significantly predict binge-eating R2= 0.21, F (4, 49) = 2.62, p = 0.04.
+  ## with affiliation (B= -6.237e-06, CI= -0.001, 0.002), autonomy (B= 8.828e-04 , CI= -0.02, 0.02), Total overall dysfunction coping subscale "DCS1" (B= 2.657e-02, CI= -0.12, 0.06), Total overall dysfunction coping subscale "DCS2" (B= 2.720e-01, CI= 0.08, 0.46), DERS total (B=  4.787e-03, CI= -0.26, 0.04)     
+
     ## for afftotal (Affiliation) Pr(>|t|) = 0.99404, which is greater than 0.05, NOT significant 
     ## for intaffw (autonomy) Pr(>|t|) = 0.92971, which is greater than 0.05, NOT significant 
-    ## for DCS1 (Total overall dysfunction coping subscake) Pr(>|t|) = 0.54981, which is greater than 0.05, NOT significant 
+    ## for DCS1 (Total overall dysfunction coping subscale) Pr(>|t|) = 0.54981, which is greater than 0.05, NOT significant 
     ## for DCS2 (Total overall dysfunction coping) Pr(>|t|) = 0.00578, which is smaller than 0.05, thus it is significant 
     ## for derstot Pr(>|t|) = 0.75919, which is greater than 0.05, NOT significant 
-    ## reject hypothesis three, the p-value is 0.1306, which is greater than 0.05, thus, NOT significant. ?
+    ## reject hypothesis three, the p-value is 0.03528, which is smaller than 0.05, thus, significant. ?
 
-lm.beta(hyp3.lm)
-    ##  dont know what this means?
- 
-hyp3a.lm <- lm(edds78 ~  afftotal + intaffw + DCS1 + DCS2 , data=bed.df)
-summary(hyp3a.lm) #
-    ## Multiple R-squared:  0.2096, p-value: 0.01744
+## I removed "DCS1" and "DCS2" with DCS3, and removed the "derstot" with DSS. because we are comparing the total of both positive and negative DERS, right?
+hyp3b.lm <- lm(edds78 ~  afftotal + intaffw + DCS3 + DSS , data=bed.df) 
+summary(hyp3b.lm) # Not significant 
+confint(hyp3b.lm)
+lm.beta(hyp3b.lm)
 
+    ## Multiple R-squared:  0.1251,	Adjusted R-squared:  0.05516 
+    ## F-statistic: 1.788 on 4 and 50 DF,  p-value: 0.1459
+    ## the p-value is 0.1459, which is greater than 0.05, thus, NOT significant
+## Results show that affiliation, autonomy, and DERS significantly predict binge-eating,  R2= 0.13, F (4, 50) = 1.788, p = 0.15.
+## with affiliation (B= -0.001, CI= -0.002, 0.001), autonomy (B= 0.01 , CI= -0.01, 0.03), total overall negative coping subscale "DCS3" (B= 0.05, CI= -0.01, 0.11), total overall positive coping subscale "DSS" (B= 0.02, CI= -0.02, 0.05), 
+
+
+## should i make a graph, if they are all not significant?
 
 # 1. DCS2
 graph6 <- ggplot(data = bed.df, aes(y=edds78, x=DCS2)) + geom_point() + geom_smooth(method="lm", se=TRUE)
 graph6 
 
+
+
+# 1. DCS2
+graph6 <- ggplot(data = bed.df, aes(y=edds78, x=DCS2)) + geom_point() + geom_smooth(method="lm", se=TRUE)
+graph6 
 
 
 ## does this mean that Hypothesis 1 and hypothesis 3 are rejected ?

@@ -177,7 +177,7 @@ ThesisData$ssoiautw <- (7.8*ThesisData$ssoi1w) + (4.5*ThesisData$ssoi2w) + (0*Th
 ThesisData$DSS <- ThesisData$wccl1+ ThesisData$wccl2 + ThesisData$wccl4 + ThesisData$wccl6 + ThesisData$wccl9 + ThesisData$wccl10+ ThesisData$wccl11 + ThesisData$wccl13   + ThesisData$wccl16  + ThesisData$wccl18  + ThesisData$wccl19  + ThesisData$wccl21 + ThesisData$wccl22  + ThesisData$wccl23  + ThesisData$wccl26  + ThesisData$wccl27  + ThesisData$wccl29  + ThesisData$wccl31  + ThesisData$wccl33 + ThesisData$wccl34  + ThesisData$wccl35+ ThesisData$wccl36  + ThesisData$wccl38 + ThesisData$wccl39  + ThesisData$wccl40  + ThesisData$wccl42  + ThesisData$wccl43  + ThesisData$wccl44  + ThesisData$wccl47  + ThesisData$wccl49  + ThesisData$wccl50  + ThesisData$wccl51  + ThesisData$wccl53  + ThesisData$wccl54  + ThesisData$wccl56  + ThesisData$wccl57  + ThesisData$wccl58+ ThesisData$wccl59
 
 
-### Total overall dysfunction coping subscake
+### Total overall dysfunction coping subscale
 ThesisData$DCS1 <- ThesisData$wccl3 + ThesisData$wccl5+ ThesisData$wccl8 + ThesisData$wccl12 + ThesisData$wccl14 + ThesisData$wccl17 + ThesisData$wccl20 + ThesisData$wccl25 + ThesisData$wccl32 + ThesisData$wccl37+ ThesisData$wccl41+ ThesisData$wccl45 + ThesisData$wccl46 + ThesisData$wccl52 + ThesisData$wccl55
 
 
