@@ -181,7 +181,7 @@ ThesisData$DSS <- ThesisData$wccl1+ ThesisData$wccl2 + ThesisData$wccl4 + Thesis
 ThesisData$DCS1 <- ThesisData$wccl3 + ThesisData$wccl5+ ThesisData$wccl8 + ThesisData$wccl12 + ThesisData$wccl14 + ThesisData$wccl17 + ThesisData$wccl20 + ThesisData$wccl25 + ThesisData$wccl32 + ThesisData$wccl37+ ThesisData$wccl41+ ThesisData$wccl45 + ThesisData$wccl46 + ThesisData$wccl52 + ThesisData$wccl55
 
 
-### Total overall dysfunction coping 
+### Total overall dysfunction coping  (blaming others factors)
 ThesisData$DCS2 <- ThesisData$wccl7 + ThesisData$wccl15 + ThesisData$wccl24 + ThesisData$wccl28 + ThesisData$wccl30 + ThesisData$wccl48
 ThesisData$DCS3 <-c(ThesisData$DCS1 +ThesisData$DCS2)
 
