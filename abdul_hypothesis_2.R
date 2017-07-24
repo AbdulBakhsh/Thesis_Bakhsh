@@ -141,19 +141,32 @@ graph5
 
 #----------------- Hypothesis 3 ---------------------------------------
 
-#Lower levels of self-concept affiliation and lower levels of affiliation and higher autonomy in a close relationship will be associated with increased binge-eating behavior regardless of overall positive or negative coping and overall emotion regulation.
+#A more hostile self-concept, more hostile levels of affiliation in a close relationship, and higher autonomy in a close relationship will be associated with increased binge-eating behavior regardless of overall positive or negative coping and overall emotion regulation.
+# higher score on affiliation the more friendly; lower less friendly (hostile)
 
 # create overall affilaition in a close relationship
-abdul.df$afftotal <- abdul.df$sostaffp + abdul.df$sostaffw + abdul.df$sosiaffp + abdul.df$sosiaffw + abdul.df$ssotaffp + abdul.df$ssotaffw + abdul.df$ssoiaffp + abdul.df$ssoiaffw
-
 bed.df$afftotal <- bed.df$sostaffp + bed.df$sostaffw + bed.df$sosiaffp + bed.df$sosiaffw + bed.df$ssotaffp + bed.df$ssotaffw + bed.df$ssoiaffp + bed.df$ssoiaffw
 
-## are you sure than intaffw is autonomy? i think it is intautw not intaffw ? or we didnt inclue the autonomy
-hyp3.lm <- lm(edds78 ~  afftotal + intaffw + DCS1 + DCS2 + derstot, data=bed.df) ## why didnt we do DCS3 Instead ?
+bed.df$auttot <- bed.df$sostautp + bed.df$sostautw + bed.df$sosiautp + bed.df$sosiautw + bed.df$ssotautp + bed.df$ssotautw + bed.df$ssoiautp + bed.df$ssoiautw
+
+# introject
+bed.df$intafftot <- bed.df$intaffp + bed.df$intaffw # self concept (introject) affiliation
+bed.df$intauttot <- bed.df$intautp + bed.df$intautw # self concept (introject) autonomy
+
+## Close relationship
+hyp3.lm <- lm(edds78 ~  afftotal + auttot + DCS3 +DSS +  derstot, data=bed.df)
 summary(hyp3.lm) # only DCS2 is significant
 confint(hyp3.lm)
 lm.beta(hyp3.lm)
-    ## Multiple R-squared:  0.2111,	Adjusted R-squared:  0.1306 
+   
+# introject (self-concept)
+hyp3a.lm <- lm(edds78 ~  intafftot + intauttot + DCS3 +DSS +  derstot, data=bed.df) 
+summary(hyp3a.lm) # only DCS2 is significant
+confint(hyp3a.lm)
+lm.beta(hyp3a.lm)
+
+
+ ## Multiple R-squared:  0.2111,	Adjusted R-squared:  0.1306 
     ## F-statistic: 2.623 on 5 and 49 DF,  p-value: 0.03528
     ## the p-value is 0.03528, which is lower than 0.05, thus, significant
 
@@ -167,21 +180,6 @@ lm.beta(hyp3.lm)
     ## for derstot Pr(>|t|) = 0.75919, which is greater than 0.05, NOT significant 
     ## reject hypothesis three, the p-value is 0.03528, which is smaller than 0.05, thus, significant. ?
 
-
-
-
-
-## I removed "DCS1" and "DCS2" with DCS3, and removed the "derstot" with DSS. because we are comparing the total of both positive and negative DERS, right?
-hyp3b.lm <- lm(edds78 ~  afftotal + intaffw + DCS3 + DSS , data=bed.df) 
-summary(hyp3b.lm) # Not significant 
-confint(hyp3b.lm)
-lm.beta(hyp3b.lm)
-
-    ## Multiple R-squared:  0.1251,	Adjusted R-squared:  0.05516 
-    ## F-statistic: 1.788 on 4 and 50 DF,  p-value: 0.1459
-    ## the p-value is 0.1459, which is greater than 0.05, thus, NOT significant
-## Results show that affiliation, autonomy, and DERS significantly predict binge-eating,  R2= 0.13, F (4, 50) = 1.788, p = 0.15.
-## with affiliation (B= -0.001, CI= -0.002, 0.001), autonomy (B= 0.01 , CI= -0.01, 0.03), total overall negative coping subscale "DCS3" (B= 0.05, CI= -0.01, 0.11), total overall positive coping subscale "DSS" (B= 0.02, CI= -0.02, 0.05), 
 
 
 ## should i make a graph, if they are all not significant?
