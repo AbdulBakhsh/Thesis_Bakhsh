@@ -123,7 +123,7 @@ summary(bed.df$edds8factor)
 ## 0 at least 14
 
 
-## Demographics means and sd
+######################################### Demographics
 ## age all age
 summary(abdul.df$age)
 sd(abdul.df$age)
@@ -132,7 +132,9 @@ sd(abdul.df$age)
 ## age BED
 summary(bed.df$age)
 sd(bed.df$age)
-## DERS
+
+
+######################################### DERS
 ## Impulse
 summary(abdul.df$impulse)
 sd(abdul.df$impulse)
@@ -183,48 +185,39 @@ summary(bed.df$derstot)
 sd(bed.df$derstot)
 
 
-## SASB
-
-## overall affilaition in a close relationship for BED only 
+######################################### SASB
+#### Relashionships 
+## overall affilaition in a close relationship for all
 summary(abdul.df$afftotal)
 sd(abdul.df$afftotal)
 ## mean= 385.60 sd= NA
 
+## overall affilaition in a close relationship for BED only 
 summary(bed.df$afftotal)
 sd(bed.df$afftotal)
 ## Mean= 345.70m sd= 391.49 
 
-## intaffw (Introject, Affiliation) ?? or autonomy
-summary(bed.df$afftotal)
-sd(bed.df$afftotal)
+## overall Autonomy in a close relationship for all
+summary(abdul.df$auttot)
+sd(abdul.df$auttot)
 
+## overall Autonomy in a close relationship for BED only
+summary(bed.df$auttot)
+sd(bed.df$auttot)
+## mean= 76.74 sd= 170.15
 
-## intaffp
-## intautp (Autonomy)
+#### introject (self-concept)
+## overall affilaition in a close relationship for BED
+summary(bed.df$intafftot)
+sd(bed.df$intafftot)
+# mean = -5.04, sd= 43.78
 
-## intautw (Introject, Autonomy)
-## sostaffp 
-## sostautp 
-## sostaffw 
-## sostautw 
-## sosiaffp 
-## sosiautp 
-## sosiaffw 
-## sosiautw 
-## ssotaffp 
-## ssotautp 
-## ssotaffw 
-## ssotautw 
-## ssoiaffp 
-## ssoiautp 
-## ssoiaffw 
-## ssoiautw 
-## DSS 
-## DCS1 
-## DCS2 
-## DCS3
+## overall autonomy in a close relationship for BED
+summary(bed.df$intauttot)
+sd(bed.df$intauttot)
+#mean= -6.218, sd= 35.95
 
-## eddsX
+#########################################  eddsX
 
 ## average edds7 and 8 (number of binge)
 summary(bed.df$edds78)
