@@ -67,15 +67,15 @@ confint(hyp1a.lm)
 abdulna.df <- na.omit(bed.df) # get rid of NA for graphing
 
 # graph strategy
-graph <- ggplot(data = abdulna.df, aes(y=edds78, x=strategy, colour=edds56f)) + labs(x="Strategy", y = "Binge eating average", title="Density Plot") + geom_point() + geom_smooth(method="lm", se=TRUE)
+graph <- ggplot(data = abdulna.df, aes(y=edds78, x=strategy, colour=edds56f)) + labs(x="Strategy", y = "Binge eating average") + geom_point() + geom_smooth(method="lm", se=TRUE)
 graph # no association between edds78 for strategy
-
+## rename legend in ggplot 
 #graph clarity
-graph1 <- ggplot(data = abdulna.df, aes(y=edds78, x=clarity, colour=edds56f)) + labs(x="Clarity", y = "Binge eating average ", title="Density Plot") + geom_point() + geom_smooth(method="lm", se=TRUE)
+graph1 <- ggplot(data = abdulna.df, aes(y=edds78, x=clarity, colour=edds56f)) + labs(x="Clarity", y = "Binge eating average ") + geom_point() + geom_smooth(method="lm", se=TRUE)
 graph1 # no association between edds78 for strategy
 
 #total ders 
-graph3 <- ggplot(data = abdulna.df, aes(y=edds78, x=derstot, colour=edds56f)) + labs(x="Total Difficulties in Emotion Regulation", y = "Binge eating average ", title="Density Plot") + geom_point() + geom_smooth(method="lm", se=TRUE)
+graph3 <- ggplot(data = abdulna.df, aes(y=edds78, x=derstot, colour=edds56f)) + labs(x="Total Difficulties in Emotion Regulation", y = "Binge eating average ") + geom_point() + geom_smooth(method="lm", se=TRUE)
 graph3 # an association in right direction but edds56 is not inlcuded
 
 

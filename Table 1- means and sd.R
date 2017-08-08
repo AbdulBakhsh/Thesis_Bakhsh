@@ -36,7 +36,7 @@ bed.df$incomefactor
 nrow(bed.df)
 ## there are 93 participants
 summary(bed.df)
-summary(abdul.df$genderfactor) 
+summary(bed.df$genderfactor) 
 #Gender:
 ## 25 male
 ## 30 female
@@ -47,7 +47,7 @@ sd(bed.df$age)
 ## Max age is 73.00
 ## min age is 21
 ## sb= 12.1
-bed.df$ethnicity
+summary(bed.df$ethnicity)
 ## Ethnicity:
 ## 30 white
 ## 18 asian
@@ -58,7 +58,7 @@ bed.df$ethnicity
 summary(bed.df$maritalfactor)
 ## Marital status
 ## 12 single
-## 23 married or in a relationship
+## 35 married or in a relationship
 ## 2 widowed
 ## 5 divorced
 ## 1 separated
